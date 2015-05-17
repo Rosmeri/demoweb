@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+    <body>
+        <div>Mi cuenta github</div>
+        
+        <div>
+            <p>
+                <span>Id</span><span id="campo_id"></span>
+            </p>
+            <p>
+                <span>Nombre</span><span id="campo_nombre"></span>
+            </p>
+            <p>
+                <span>Folowers:</span><span id="campo_followers"></span>
+            </p>
+            <p>
+                <span>Fecha de Creaci&oacute;n</span><span id="campo_fcreacion"></span>
+            </p> 
+            <p>  <img src ="" id="campo_gravatar" /></p>
+        </div>
+        
+     
+         <script src="js/jquery.js"></script>
+         <script src="bootstrap/js/bootstrap.min.js"></script>
+         <script type="text/javascript">
+             jQuery(function(){
+                 jQuery.ajax({
+                   url:"https://api.github.com/users/Rosmeri",
+                   success : function (response){
+                       console.log(response);
+                       var nombre = "<a href=' "+response.html_url+"'target='blanl'>"+response.login+"</a>";
+                       jQuery("#campo_id").html(response.id);
+                       jQuery("#campo_nombre").html(nombre);
+                       jQuery("#campo_followers").html(response.followers);
+                       jQuery("#campo_fcreacion").html(response.created_at);
+                       jQuery("#campo_gravatar").attr("src", response.avatar_url);
+            
+                   }
+                 });
+             });
+            </script>
+    </body>
+</html>
